@@ -2,13 +2,22 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: Segoe UI, Tahoma, Geneva, 'Verdana', sans-serif;
 }
 
 html,
 body {
   height: 100%;
-  background-color: rgb(254, 224, 237);
+  background-image: url(../components/images/hero.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  
+}
+@font-face {
+  font-family: atop;
+  src: url(../components/fonts/Atop-R99O3.ttf);
 }
 
 h1,

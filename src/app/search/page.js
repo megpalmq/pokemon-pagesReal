@@ -24,7 +24,6 @@ export default function SearchPage() {
             const res = await fetch(pokemon.url);
             const pokemonData = await res.json();
             
-            
             const speciesRes = await fetch(pokemonData.species.url);
             const speciesData = await speciesRes.json();
             
@@ -79,7 +78,7 @@ export default function SearchPage() {
 
   return (
     <div className={styles.searchContainer}>
-      <h1>Search Pokémon</h1>
+      <h1 className={styles.h1}>Search Pokémon</h1>
       <form onSubmit={handleSearch} className={styles.searchForm}>
         <input 
           type="text"
