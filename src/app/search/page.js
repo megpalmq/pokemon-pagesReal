@@ -14,35 +14,42 @@ export default function SearchPage() {
   const pokeApi = usePokemonApi();
 
   useEffect(() => {
+    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
     const fetchAllPokemon = async () => {
       try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
         const data = await response.json();
-        
-        const pokemonDetails = await Promise.all(
-          data.results.map(async (pokemon) => {
+
+        const pokemonDetails = [];
+        for (const pokemon of data.results) {
+          try {
             const res = await fetch(pokemon.url);
             const pokemonData = await res.json();
-            
+
             const speciesRes = await fetch(pokemonData.species.url);
             const speciesData = await speciesRes.json();
-            
-            return {
+
+            pokemonDetails.push({
               ...pokemonData,
               habitat: speciesData.habitat ? speciesData.habitat.name : null,
               egg_groups: speciesData.egg_groups.map(group => group.name)
-            };
-          })
-        );
-        
+            });
+
+            await delay(100); 
+          } catch (err) {
+            console.error(`Error fetching data for ${pokemon.name}:`, err);
+          }
+        }
+
         setAllPokemon(pokemonDetails);
-        setDisplayedPokemon(pokemonDetails); 
+        setDisplayedPokemon(pokemonDetails);
         setLoading(false);
-        console.log("Fetched Pokemon:", pokemonDetails);
+        console.log("Fetched all Pokémon with details:", pokemonDetails);
       } catch (err) {
         setError('Failed to load Pokémon');
         setLoading(false);
-        console.error("Error fetching Pokemon:", err);
+        console.error("Error fetching all Pokémon:", err);
       }
     };
 
@@ -69,7 +76,7 @@ export default function SearchPage() {
       }
     });
 
-    console.log("Filtered Pokemon:", filtered);
+    console.log("Filtered Pokémon:", filtered);
     setDisplayedPokemon(filtered);
   };
 

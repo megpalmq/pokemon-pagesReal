@@ -57,3 +57,27 @@
   justify-items: center;
   
 }
+@media (max-width: 600px) {
+  .searchForm {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .searchInput, 
+  .searchSelect, 
+  .searchButton {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .pokemonGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 200px;
+  }
+}

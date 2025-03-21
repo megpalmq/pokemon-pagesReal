@@ -95,3 +95,83 @@ background:  linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
   margin-bottom: 1rem;
   margin-top: 100px;
 }
+
+@media screen and (max-width: 1024px) and (min-width: 601px) {
+  .wrapper {
+    height: 100vh;
+    margin-top: -50px;
+    padding: 2rem 1rem;
+    background: none;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+
+  .description {
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  .pokemonCardContainer {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .pokemonCard {
+    width: 180px;
+    height: 270px;
+  }
+
+  .pokemonImage {
+    width: 100px;
+    height: 100px;
+  }
+
+  .refreshButton {
+    margin-top: 50px;
+  }
+}
+
+/* Phone size (up to 600px) */
+@media screen and (max-width: 600px) {
+  .wrapper {
+    height: auto;
+    margin-top: -30px;
+    padding: 1.5rem 1rem;
+  }
+
+  .mainContent {
+    padding: 2rem 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+  }
+
+  .pokemonCardContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .pokemonCard {
+    width: 160px;
+    height: 240px;
+  }
+
+  .pokemonImage {
+    width: 90px;
+    height: 90px;
+  }
+
+  .refreshButton {
+    margin-top: 40px;
+    width: 100%;
+  }
+}
